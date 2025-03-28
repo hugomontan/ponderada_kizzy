@@ -37,13 +37,13 @@ D) O código avalia a expressão booleana, imprime `false` e ordena os valores e
 
 Após definir p, q e r, o código faz a avaliação de uma expressão lógica na linha 6: 
 
-‘let resultado = (p % q === 1) && (r * 2 > p) || (q + r < p)’
+```let resultado = (p % q === 1) && (r * 2 > p) || (q + r < p)```
 
 Nela, ele verifica o resto da divisão entre p e q, e se ele possui igualdade estrita com 1. Essa condição está conectada com &&, na colocação de que o dobro de r é maior que p. 
 
 Como 10/3 possui resto 1 e 6*2 é maior que 10, as duas primeiras colocações são culminam em true. A terceira colocação (q + r < p), também é verdadeira, uma vez que (3+6 < 10). 
 
-Logo ‘true || true = true’, imprimindo. 
+Logo ```true || true = true```, imprimindo. 
 
 Em sequência, o código apresenta um array composto por 5 números, iterando eles mesmos e obtendo o resultado de 29160, que é impresso. 
 
@@ -277,13 +277,13 @@ Pedidos de R$200,00 ou mais → 'Frete grátis!'
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
 
 ** RESPOSTA: **
-```
+```pseudocodigo
 inicio
    leia valortotal
    se valortotal < 50
-      escreva 'frete não disponível!'
-   senão se valor_total >= 50 e valor_total <= 199.99
-      escreva 'frete com custo adicional!'
+      escreva 'Frete não disponível!'
+   senão se valortotal >= 50 e valortotal <= 199.99
+      escreva 'Frete com custo adicional!'
    senão
       escreva 'Frete grátis!'
 fim
@@ -293,15 +293,29 @@ ______
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
 
 ```
-Classe Veiculo:
-Atributos:
+classe Veiculo:
+   atributos:
+      modelo
+      ano
 
-modelo
-ano
-Método Construtor(modelo, ano):
+   metodo construtor(modelo, ano):
+      definir this.modelo = modelo
+      definir this.ano = ano
 
-Define os valores dos atributos modelo e ano com os valores passados como parâmetro.
-Método CalcularConsumo():
+   metodo calcularconsumo():
+      escreva 'Método calcularconsumo não implementado na classe base.'
+classe Carro herda Veiculo:
+   atributos:
+      eficiencia  // km/l
+
+   metodo calcularconsumo(quilometragem):
+      retornar quilometragem / eficiencia
+
+classe Moto herda Veiculo:
+   atributos:
+      eficiencia  // km/l
+   metodo calcularconsumo(quilometragem):
+      retornar quilometragem / eficiencia
 ```
 
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
@@ -320,7 +334,7 @@ classe automovel:
       definir this.ano = ano
 
    metoodo calcularconsumo():
-      Escreva 'metodo calcularconsumo não implementado na classe base.'’
+      escreva 'metodo calcularconsumo não implementado na classe base.'’
 ```
 
 ______
@@ -347,14 +361,15 @@ inicio
    leia tempoMaximo
    tempo = 0
    velocidade = velocidadeInicial
-   enquanto velocidade > velocidadesegura e tempo < tempomaximo:
+   
+   enquanto velocidade > velocidadesegura e tempo < tempoMaximo:
+      velocidade = velocidade - desaceleracao
       tempo = tempo + 1
-      velocidade = velocidadeInicial - desaceleracao * tempo
 
    se velocidade <= velocidadesegura:
-      escreva 'a sonda atingiu a velocidade segura de pouso em ' + tempo + ' segundos.'
-   senao se tempo >= tempomaximo:
-      escreva 'tempo máximo de descida atingido antes de atingir a velocidade segura.'
+      escreva 'A sonda atingiu a velocidade segura de pouso em ' + tempo + ' segundos.'
+   senao se tempo >= tempoMaximo:
+      escreva 'Tempo máximo de descida atingido antes de atingir a velocidade segura.'
 fim
 ```
 
@@ -365,29 +380,25 @@ ______
 A seguir, é fornecida a implementação da função SomarMatrizesInvestimento(matrizA, matrizB), que soma os valores de duas matrizes de investimento. Sua tarefa é implementar uma função semelhante, porém que realize a multiplicação das matrizes de investimento, determinando como os investimentos afetam os resultados ao longo do tempo.
 
 ```
-função multiplicarmatrizesinvestimento(matriza, matrizb):  
-    se tamanho(matriza[0]) ≠ tamanho(matrizb) então:  
-        retornar 'não dá pra multiplicar, as dimensões não batem'  
+função multiplicarMatrizesInvestimento(matrizA, matrizB):  
+    se tamanho(matrizA[0]) ≠ tamanho(matrizB) então:  
+        retornar 'Não é possível multiplicar - dimensões incompatíveis'  
     
     senão:  
-        linhasa <- tamanho(matriza)  
-        colunasa <- tamanho(matriza[0])  
-        colunasb <- tamanho(matrizb[0])  
-        matrizresultado <- novamatriz(linhasa, colunasb)  
+        linhasA < - tamanho(matrizA)  
+        colunasA < - tamanho(matrizA[0])  
+        colunasB < - tamanho(matrizB[0])  
+        matrizResultado < - novaMatriz(linhasA, colunasB)  
 
-        para i de 0 até linhasa-1 faça:  
-            para j de 0 até colunasb-1 faça:  
-                matrizresultado[i][j] <- 0  
-                para k de 0 até colunasa-1 faça:  
-                    matrizresultado[i][j] <- matrizresultado[i][j] + matriza[i][k] * matrizb[k][j]  
+        para i de 0 até linhasA-1 faça:  
+            para j de 0 até colunasB-1 faça:  
+                matrizResultado[i][j] < - 0  
+                para k de 0 até colunasA-1 faça:  
+                    matrizResultado[i][j] < - matrizResultado[i][j] + matrizA[i][k] * matrizB[k][j]  
 
-        retornar matrizresultado  
+        retornar matrizResultado  
 
-investimentosano1 <- [[1000, 2000], [1500, 2500]]  
-fatorescrescimento <- [[1.1, 0.9], [1.2, 1.3]]  
-
-resultadosinvestimentos <- multiplicarmatrizesinvestimento(investimentosano1, fatorescrescimento)  
-escrever('resultados dos investimentos depois de multiplicar com os fatores de crescimento:')  
-imprimirmatriz(resultadosinvestimentos)
-
+função imprimirMatriz(matriz):
+   para cada linha na matriz:
+      escrever(linha)
 ```
